@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coulson Consultants Ltd</title>
+  <!-- Font Awesome for social icons -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yHHzq0vGJJLKMvHgV3ov9ko+NNljSb9W6KkYzA6uT6gU8vTf0EbxV5mF2ZtNGq2fuA3U7zjcK/ltbx0vmtdYig==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+    }
+
+    body {
+      background: url('/Images/BG_Maintenance.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .title {
+      font-size: 3.8rem;
+      font-weight: bold;
+    }
+
+    .typing {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      min-height: 1.4rem;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .spinner {
+      margin-top: 2rem;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #fff;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .contact {
+      margin-top: 3.5rem;
+      font-size: 1rem;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .contact i {
+      margin-right: 0.9rem;
+    }
+
+    .contact img{
+        width: 20px;
+        height: 20px;
+        margin-bottom: -3px;
+    }
+
+    .socials {
+      position: absolute;
+      bottom: 40px;
+      display: flex;
+      gap: 15px;
+    }
+    .socials img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .socials a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .socials a:hover {
+      color: #00bfff;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2.5rem;
+      }
+      .typing {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="title">Coulson Consultants Ltd</div>
+    <div class="typing" id="typing-text"></div>
+    <div class="spinner"></div>
+
+    <div class="contact">
+      <a href="tel:+254712345678">
+        <i class="fas fa-phone"></i> Please reach us on: <br><img src="/Images/phone-call.png" alt="fbicon"> +254 712 345 678
+      </a>
+    </div>
+
+    <div class="socials">
+      <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i><img src="/Images/fbiconnbg.png" alt="fbicon"> Facebook</a>
+      <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i><img src="/Images/xicon.png" alt="twittericon"> Twitter</a>
+      <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i><img src="/Images/lnkedinnbg.png" alt="lnkdicon"> linkedin</a>
+      <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i><img src="/Images/instagram.png" alt="igicon"> Instagram</a>
+    </div>
+  </div>
+
+  <script>
+    const text = "We're working hard to launch something great.";
+    const typingEl = document.getElementById("typing-text");
+
+    let index = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      let currentText = text.substring(0, index);
+      typingEl.textContent = currentText;
+
+      if (!isDeleting) {
+        if (index < text.length) {
+          index++;
+          setTimeout(typeLoop, 60);
+        } else {
+          isDeleting = true;
+          setTimeout(typeLoop, 2500); // pause before deleting
+        }
+      } else {
+        if (index > 0) {
+          index--;
+          setTimeout(typeLoop, 40);
+        } else {
+          isDeleting = false;
+          setTimeout(typeLoop, 2500); // pause before typing again
+        }
+      }
+    }
+
+    typeLoop();
+  </script>
+</body>
+</html>
